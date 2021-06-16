@@ -21,7 +21,7 @@ stages:
      - bash: echo $(Build.SourceDirectory)
      - bash: echo $(Build.DefaultWorkingDirectory)
      - bash: ls -R $(System.DefaultWorkingDrectory)
-     - bash: ls -R $(Build.StagingWorkingDirectory)
+     - bash: ls -R $(Build.ArtifactStagingDirectory)
      - bash : java -version
      - bash: node --version
      - bash: mvn -version
@@ -33,7 +33,7 @@ stages:
            **/*.yaml
            **/*.tf
          TargetFolder: '$(Build.ArtifactStagingDirectory)'
-     - bash: ls -R $(Build.StagingWorkingDirectory)
+     - bash: ls -R $(Build.ArtifactStagingDirectory)
 
   #  - job : SecondJob
   #    steps:
