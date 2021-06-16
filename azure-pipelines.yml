@@ -20,7 +20,7 @@ stages:
      - bash: echo $(Build.BuildId)
      - bash: echo $(Build.SourceDirectory)
      - bash: echo $(Build.DefaultWorkingDirectory)
-     - bash: ls -R $(System.DefaultWorkingDrectory)
+     - bash: ls -R $(System.DefaultWorkingDirectory)
      - bash: ls -R $(Build.ArtifactStagingDirectory)
      - bash : java -version
      - bash: node --version
@@ -28,12 +28,17 @@ stages:
      - bash: python --version
      - task: CopyFiles@2
        inputs:
-         SourceFolder: '$(System.DefaultWorkingDrectory)'
+         SourceFolder: '$(System.DefaultWorkingDirectory)'
          Contents: |
            **/*.yaml
            **/*.tf
          TargetFolder: '$(Build.ArtifactStagingDirectory)'
      - bash: ls -R $(Build.ArtifactStagingDirectory)
+     - task: PublishBuildArtifacts@1
+       inputs:
+         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+         ArtifactName: 'drop'
+         publishLocation: 'Container'
 
   #  - job : SecondJob
   #    steps:
