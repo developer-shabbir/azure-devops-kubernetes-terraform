@@ -16,11 +16,11 @@ stages:
      steps:
      - bash : echo Buildeploy job
      - bash : echo $(PipelineLevelVarible)
-     - bash: $(Build.BuildNumber)
-     - bash: $(Build.BuildId)
-     - bash: $(Build.SourceDirectory)
-     - bash: $(Build.DefaultWorkingDirectory)
-     - bash: $(System.DefaultWorkingDrectory)
+     - bash: echo $(Build.BuildNumber)
+     - bash: echo $(Build.BuildId)
+     - bash: echo $(Build.SourceDirectory)
+     - bash: echo $(Build.DefaultWorkingDirectory)
+     - bash: echo $(System.DefaultWorkingDrectory)
    - job : SecondJob
      steps:
      - bash : echo build second job
