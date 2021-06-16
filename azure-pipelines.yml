@@ -12,14 +12,25 @@ pool:
 stages:
 - stage: Build
   jobs:
-  -job: FirstJob
-   steps:
-   - script: echo First Job
-   displayName: 'Run a one-line script'
+- job:FirstJob
+steps:
+- bash: echo Build Firstjob
+- job:SecondJob
+steps:
+- bash: echo Build Secondjob
+- stage: DevDeploy
+- job:DevDeployJob
+steps:
+- bash: echo DevDeploy job
+- stage: QAdeploy
+- job:DevDeployJob
+steps:
+- bash: echo QAdeploy job
+- stage: ProdDeploy
+- job:ProdDeployJob
+steps:
+- bash: echo ProdDeploy job
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
 
 
+ 
