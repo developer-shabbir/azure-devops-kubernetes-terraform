@@ -20,7 +20,7 @@ stages:
      - bash: echo $(Build.BuildId)
      - bash: echo $(Build.SourceDirectory)
      - bash: echo $(Build.DefaultWorkingDirectory)
-     - bash: echo $(System.DefaultWorkingDrectory)
+     - bash: ls -R $(System.DefaultWorkingDrectory)
    - job : SecondJob
      steps:
      - bash : echo build second job
